@@ -1,7 +1,5 @@
-mod app;
-
-use app::App;
+use ui::components;
 
 fn main() {
-    yew::Renderer::<App>::new().render();
+    yew::Renderer::<components::app::App>::new().render();
 }

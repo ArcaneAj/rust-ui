@@ -1,35 +1,127 @@
-html,
+/* http://meyerweb.com/eric/tools/css/reset/ 
+     v2.0 | 20110126
+     License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
 body {
-  height: 100%;
-  margin: 0;
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
-body {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+/* end css reset */
 
-  background: linear-gradient(to bottom right, #444444, #009a5b);
-  font-size: 1.5rem;
+html,
+body {
+    height: 100%;
 }
 
 main {
-  color: #fff6d5;
-  font-family: sans-serif;
-  text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: relative;
+    background-color: #1a1139;
+    color: white;
 }
 
-.logo {
-  height: 20em;
+.full-height {
+    height: 100%;
 }
 
-.heart:after {
-  content: "❤️";
-
-  font-size: 1.75em;
+.full-width {
+    width: 100%;
 }
 
-h1 + .subtitle {
-  display: block;
-  margin-top: -1em;
+.mountain {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+}
+
+.moon {
+    width: 17%;
+    position: absolute;
+    // bottom: 15vw;
+    bottom: 50%;
+    right: 15%;
+}
+
+.mountain-text {
+    position: relative;
+    top: -5%;
+    left: -15%;
+    a:link, a:visited {
+        color:white;
+    }
+}
+
+menu {
+    position: absolute;
+    top: 0px;
+    color: white;
+    height: 3em;
+}
+
+menu-content {
+    display: block;
+    padding: 1em;
+    height: 1em;
+}
+
+title {
+    height: 1em;
+    display: inline-block;
+    border-left: 1px solid #ffb41d;
+    padding-left: 1em;
+    margin-left: 1em;
+    &.first {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    &.logo {
+        color: #ffb41d;
+    }
 }
