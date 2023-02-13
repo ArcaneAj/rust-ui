@@ -1,6 +1,7 @@
 # ArcaneAJ's sandbox rust ui
 
 This is a fairly lightweght ui example used to test out a variety of features of the yew framework.
+A demo is currently hosted at <https://brave-tree-0f72d0610.2.azurestaticapps.net/>
 
 ## Usage
 
