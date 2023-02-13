@@ -1,5 +1,7 @@
 use yew::prelude::*;
 
+use crate::components::nav_button::NavButton;
+
 #[derive(PartialEq, Properties)]
 pub struct VirtualManCaveComponentProps {
 }
@@ -28,9 +30,9 @@ pub fn virtual_man_cave_component(VirtualManCaveComponentProps {}: &VirtualManCa
         <div class={classes!("man-cave")}>
             <div>
                 <h1 style="display: inline-block;">{"Certified old school time wasters:"}</h1>
-                <div style="float: right;">
-                    <button onclick={on_click_back}>{ "Back" }</button>
-                    <button onclick={on_click_next}>{ "Next" }</button>
+                <div style="float: right; font-size: 0;">
+                    <NavButton text="<" onclick={on_click_back}></NavButton>
+                    <NavButton text=">" onclick={on_click_next}></NavButton>
                 </div>
             </div>
             { switch(get_widget_by_index(*counter)) }

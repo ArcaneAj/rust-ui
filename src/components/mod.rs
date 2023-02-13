@@ -1,3 +1,4 @@
+pub mod nav_button;
 pub mod home;
 pub mod contact;
 pub mod links;

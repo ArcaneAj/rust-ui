@@ -130,6 +130,9 @@ table {
 
 /* end css reset */
 
+$primary: #1a1139;
+$secondary: #ffb41d;
+
 html,
 body {
     height: 100%;
@@ -141,7 +144,7 @@ main {
     justify-content: center;
     font-size: 1.5rem;
     position: relative;
-    background-color: #1a1139;
+    background-color: $primary;
     color: white;
 }
 
@@ -163,7 +166,6 @@ main {
 .moon {
     width: 17%;
     position: absolute;
-    // bottom: 15vw;
     bottom: 50%;
     right: 15%;
 }
@@ -194,7 +196,7 @@ menu-content {
 title {
     height: 1em;
     display: inline-block;
-    border-left: 1px solid #ffb41d;
+    border-left: 1px solid $secondary;
     padding-left: 1em;
     margin-left: 1em;
     &.first {
@@ -204,7 +206,7 @@ title {
     }
 
     &.logo {
-        color: #ffb41d;
+        color: $secondary;
     }
 }
 
@@ -212,4 +214,13 @@ title {
     position: absolute;
     top: 20%;
     left: 10%;
+}
+
+.nav-button {
+    height: 24px;
+    width: 24px;
+    background: none;
+    color: $secondary;
+    border-color: $secondary;
+    border-radius: 12px;
 }
