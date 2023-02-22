@@ -686,6 +686,9 @@ dependencies = [
 name = "ui"
 version = "1.0.0"
 dependencies = [
+ "gloo-net",
+ "serde",
+ "wasm-bindgen-futures",
  "yew",
  "yew-router",
 ]

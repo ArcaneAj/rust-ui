@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use gloo_net::http::Request;
 
 use crate::components::nav_button::NavButton;
 
@@ -9,6 +10,7 @@ pub struct VirtualManCaveComponentProps {
 #[function_component(VirtualManCave)]
 pub fn virtual_man_cave_component(VirtualManCaveComponentProps {}: &VirtualManCaveComponentProps) -> Html {
     let counter = use_state(|| 0);
+    let message: UseStateHandle<AttrValue> = use_state(|| AttrValue::from(""));
     
     let on_click_next = {
         let counter = counter.clone();
@@ -26,10 +28,26 @@ pub fn virtual_man_cave_component(VirtualManCaveComponentProps {}: &VirtualManCa
         }
     };
 
+    {
+        let message = message.clone();
+        use_effect_with_deps(move |_| {
+            let message = message.clone();
+            wasm_bindgen_futures::spawn_local(async move {
+                let fetched_message = Request::get("http://localhost:7071/api/HttpExample?name=Cave Man")
+                    .send()
+                    .await
+                    .unwrap();
+                message.set(AttrValue::from(fetched_message.text().await.unwrap()));
+            });
+            || ()
+        }, ());
+    }
+
     html! { 
         <div class={classes!("man-cave")}>
             <div>
                 <h1 style="display: inline-block;">{"Certified old school time wasters:"}</h1>
+                <p>{ (*message).clone() }</p>
                 <div style="float: right; font-size: 0;">
                     <NavButton text="<" onclick={on_click_back}></NavButton>
                     <NavButton text=">" onclick={on_click_next}></NavButton>
