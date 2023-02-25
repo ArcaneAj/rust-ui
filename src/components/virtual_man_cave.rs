@@ -1,7 +1,8 @@
 use yew::prelude::*;
-use gloo_net::http::Request;
+use std::collections::HashMap;
 
 use crate::components::nav_button::NavButton;
+use crate::services::http_service;
 
 #[derive(PartialEq, Properties)]
 pub struct VirtualManCaveComponentProps {
@@ -31,13 +32,13 @@ pub fn virtual_man_cave_component(VirtualManCaveComponentProps {}: &VirtualManCa
     {
         let message = message.clone();
         use_effect_with_deps(move |_| {
-            let message = message.clone();
+            let mut parameters: HashMap<String, String> = HashMap::new();
+            parameters.insert(String::from("name"), String::from("Cave Man"));
             wasm_bindgen_futures::spawn_local(async move {
-                let fetched_message = Request::get("http://localhost:7071/api/HttpExample?name=Cave Man")
-                    .send()
-                    .await
-                    .unwrap();
-                message.set(AttrValue::from(fetched_message.text().await.unwrap()));
+                match http_service::get_text(&parameters, "api/HttpExample".to_owned()).await {
+                    Ok(msg) => message.set(AttrValue::from(msg)),
+                    Err(err) => message.set(AttrValue::from(err.to_string()))
+                }
             });
             || ()
         }, ());

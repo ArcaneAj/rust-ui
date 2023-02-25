@@ -1,0 +1,1 @@
+pub const API_ROOT: &str = "http://localhost:7071/";
